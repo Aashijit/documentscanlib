@@ -8,6 +8,8 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;  
+
 
 /**
  * Created by jhansi on 28/03/15.
@@ -18,7 +20,7 @@ public class ScanActivity extends Activity implements IScanner, ComponentCallbac
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.scan_layout);
-        Toast.makeText(getApplicationContext(),"Hello Scanner, Welcome",Toast. LENGTH_SHORT);
+        Toast.makeText(getApplicationContext(),"Hello Scanner, Welcome to DIGICLOU",Toast.LENGTH_LONG).show();
         init();
     }
 
