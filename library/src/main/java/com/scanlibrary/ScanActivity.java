@@ -4,8 +4,10 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.FragmentTransaction;
 import android.content.ComponentCallbacks2;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;  
@@ -54,16 +56,26 @@ public class ScanActivity extends Activity implements IScanner, ComponentCallbac
     }
 
     @Override
-    public void onScanFinish(Uri uri) {
-        ResultFragment fragment = new ResultFragment();
-        Bundle bundle = new Bundle();
-        bundle.putParcelable(ScanConstants.SCANNED_RESULT, uri);
-        fragment.setArguments(bundle);
-        android.app.FragmentManager fragmentManager = getFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.add(R.id.content, fragment);
-        fragmentTransaction.addToBackStack(ResultFragment.class.toString());
-        fragmentTransaction.commit();
+    public void onScanFinish(final Uri uri) {
+
+        Intent data = new Intent();
+//                    Bitmap bitmap = Utils.getBitmap(getApplicationContext(),uri);
+//                    Uri uri = Utils.getUri(getActivity(), bitmap);
+        data.putExtra(ScanConstants.SCANNED_RESULT, uri);
+        setResult(Activity.RESULT_OK, data);
+        finish();
+//                    original.recycle();
+//        System.gc();
+
+//        ResultFragment fragment = new ResultFragment();
+//        Bundle bundle = new Bundle();
+//        bundle.putParcelable(ScanConstants.SCANNED_RESULT, uri);
+//        fragment.setArguments(bundle);
+//        android.app.FragmentManager fragmentManager = getFragmentManager();
+//        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//        fragmentTransaction.add(R.id.content, fragment);
+//        fragmentTransaction.addToBackStack(ResultFragment.class.toString());
+//        fragmentTransaction.commit();
     }
 
     @Override
