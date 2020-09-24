@@ -10,7 +10,9 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.Toast;  
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.Toast;
 
 
 /**
@@ -22,11 +24,13 @@ public class ScanActivity extends Activity implements IScanner, ComponentCallbac
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.scan_layout);
-        Toast.makeText(getApplicationContext(),"Hello Scanner, Welcome to DIGICLOU",Toast.LENGTH_LONG).show();
+//        Toast.makeText(getApplicationContext(),"Hello Scanner, Welcome to DIGICLOU",Toast.LENGTH_LONG).show();
         init();
     }
 
     private void init() {
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         PickImageFragment fragment = new PickImageFragment();
         Bundle bundle = new Bundle();
         bundle.putInt(ScanConstants.OPEN_INTENT_PREFERENCE, getPreferenceContent());
