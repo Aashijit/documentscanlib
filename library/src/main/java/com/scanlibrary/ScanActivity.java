@@ -15,9 +15,7 @@ import android.view.WindowManager;
 import android.widget.Toast;
 
 
-/**
- * Created by jhansi on 28/03/15.
- */
+
 public class ScanActivity extends Activity implements IScanner, ComponentCallbacks2 {
 
     @Override
